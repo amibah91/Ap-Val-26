@@ -8,6 +8,8 @@ const buttonArea = document.getElementById("buttonArea");
 const replayBtn = document.getElementById("replayBtn");
 const heartsLayer = document.getElementById("heartsLayer");
 
+const loveSong = document.getElementById("loveSong");
+
 const questionEl = document.getElementById("question");
 const giggleEl = document.getElementById("giggle");
 
@@ -142,6 +144,11 @@ yesBtn.addEventListener("click", () => {
   askScreen.classList.add("hidden");
   yesScreen.classList.remove("hidden");
   startHearts(6500);
+
+  // 🎶 play music
+  loveSong.currentTime = 0;
+  loveSong.volume = 0.7;
+  loveSong.play().catch(() => {});
 });
 
 replayBtn.addEventListener("click", () => {
