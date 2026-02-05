@@ -15,7 +15,7 @@ const giggleEl = document.getElementById("giggle");
 
 let noCount = 0;
 
-// Question
+// Question text
 const fullQuestion = "Big Sexy… will you be my Valentine? 🥺";
 
 // No button text
@@ -43,12 +43,12 @@ const giggles = [
   "*whispers: just press yes* 🥲"
 ];
 
-function clamp(n, min, max){
+function clamp(n, min, max) {
   return Math.max(min, Math.min(max, n));
 }
 
 // Typing animation
-function typeText(el, text, speed = 45){
+function typeText(el, text, speed = 45) {
   el.textContent = "";
   let i = 0;
   const t = setInterval(() => {
@@ -58,8 +58,8 @@ function typeText(el, text, speed = 45){
   }, speed);
 }
 
-// Move No safely within the button area
-function moveNoButton(){
+// Move No button
+function moveNoButton() {
   const areaRect = buttonArea.getBoundingClientRect();
   const btnRect = noBtn.getBoundingClientRect();
 
@@ -74,25 +74,18 @@ function moveNoButton(){
   noBtn.style.top = `${y}px`;
 }
 
-// Yes grows after 2 dodges
-function growYesButton(){
-  if (noCount < 2) return;
-  const scale = clamp(1 + (noCount - 1) * 0.22, 1, 4);
-  yesBtn.style.transform = `scale(${scale})`;
-}
-
-function setNoText(){
+function setNoText() {
   const i = clamp(noCount, 0, noTexts.length - 1);
   noBtn.textContent = noTexts[i];
 }
 
-function setGiggle(){
+function setGiggle() {
   const i = clamp(noCount, 0, giggles.length - 1);
   giggleEl.textContent = giggles[i];
 }
 
-// Hearts
-function startHearts(durationMs = 5000){
+// Hearts animation
+function startHearts(durationMs = 5000) {
   const spawn = setInterval(() => {
     const heart = document.createElement("div");
     heart.className = "heart";
@@ -113,9 +106,8 @@ function startHearts(durationMs = 5000){
   setTimeout(() => clearInterval(spawn), durationMs);
 }
 
-// No button behavior (THIS is the important fix)
-function dodgeNo(){
-  // First dodge: allow No to escape the row
+// No button dodge behavior
+function dodgeNo() {
   if (noCount === 0) {
     noBtn.style.position = "absolute";
     noBtn.style.zIndex = "999";
@@ -123,7 +115,6 @@ function dodgeNo(){
 
   noCount++;
 
-  // 🔽 Shrink No a little each time (gentle)
   const scale = Math.max(0.75, 1 - noCount * 0.05);
   noBtn.style.setProperty("--noScale", scale);
 
@@ -135,23 +126,40 @@ function dodgeNo(){
 // Events
 noBtn.addEventListener("mouseenter", dodgeNo);
 noBtn.addEventListener("click", dodgeNo);
-noBtn.addEventListener("touchstart", (e) => {
-  e.preventDefault();
-  dodgeNo();
-}, { passive: false });
+noBtn.addEventListener(
+  "touchstart",
+  (e) => {
+    e.preventDefault();
+    dodgeNo();
+  },
+  { passive: false }
+);
 
+// YES button — plays music
 yesBtn.addEventListener("click", () => {
   askScreen.classList.add("hidden");
   yesScreen.classList.remove("hidden");
   startHearts(6500);
 
-  // 🎶 play music
-  loveSong.currentTime = 0;
-  loveSong.volume = 0.7;
-  loveSong.play().catch(() => {});
+  if (loveSong) {
+    loveSong.pause();
+    loveSong.currentTime = 0;
+    loveSong.volume = 0.7;
+
+    const playPromise = loveSong.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {});
+    }
+  }
 });
 
+// Replay button — stops music
 replayBtn.addEventListener("click", () => {
+  if (loveSong) {
+    loveSong.pause();
+    loveSong.currentTime = 0;
+  }
+
   noCount = 0;
   noBtn.textContent = "No";
   giggleEl.textContent = "you are so smart!!! 😚😚";
@@ -159,8 +167,10 @@ replayBtn.addEventListener("click", () => {
   noBtn.style.left = "";
   noBtn.style.top = "";
   noBtn.style.position = "relative";
+
   askScreen.classList.remove("hidden");
   yesScreen.classList.add("hidden");
+
   typeText(questionEl, fullQuestion, 45);
 });
 
