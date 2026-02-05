@@ -25,7 +25,7 @@ const noTexts = [
   "Baby pls 🥹",
   "I'm begging for a crumb of peen",
   "Be soooo fr Apayo…",
-  "You sayyyy you love me ☹️",
+  "You say you love me ☹️",
   "Why, baby, why?? 😭",
   "You’re breaking my heart 💔",
   "Fine… I’ll cry 😢"
