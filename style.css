@@ -23,7 +23,7 @@ body{
       rgba(255, 230, 242, 0.7),
       rgba(255, 230, 242, 0.7)
     ),
-    url("baby.PNG");
+    url("/baby.PNG");
 
   background-size: cover;
   background-position: center;
