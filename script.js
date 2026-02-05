@@ -19,11 +19,11 @@ const fullQuestion = "Big Sexy… will you be my Valentine? 🥺";
 const noTexts = [
   "No",
   "Are you sure, baby?",
-  "Think again… 😌",
+  "Think again… 🤔",
   "Really no??",
   "Baby pls 😭",
   "I'm begging for a crumb of peen 😔",
-  "Be fr Apayo…",
+  "Be soooo fr Apayo…",
   "You sayyyy you love me 🤨",
   "Okay but… why??",
   "You’re breaking my heart 💔",
@@ -31,14 +31,13 @@ const noTexts = [
 ];
 
 const giggles = [
-  "*giggles* 😇",
-  "*side-eyes you* 👀",
-  "*starts laughing* 😭",
+  "*teehee* 😇",
+  "try harder (but not really 🫣)",
   "*dramatic gasp* 😱",
   "*falls to knees* 🧎‍♀️",
-  "*sobs cutely* 🥺",
+  "*sobs but in a pretty way* 🥺",
   "*throws roses anyway* 🌹",
-  "*whispers: just press yes* 🤭"
+  "*whispers: just press yes* 🥲"
 ];
 
 function clamp(n, min, max){
