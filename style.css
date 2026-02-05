@@ -220,3 +220,52 @@ h2{
 .btn.no{
   transform: scale(var(--noScale, 1));
 }
+/* ✨ Sparkly bear box ✨ */
+.gifBox{
+  position: relative;
+  overflow: hidden;
+}
+
+/* sparkles layer */
+.gifBox::before,
+.gifBox::after{
+  content: "✨ ✦ ✨";
+  position: absolute;
+  font-size: 22px;
+  opacity: 0;
+  pointer-events: none;
+  animation: sparkle 3.5s infinite ease-in-out;
+}
+
+/* top-left sparkle */
+.gifBox::before{
+  top: 14px;
+  left: 18px;
+  animation-delay: 0s;
+}
+
+/* bottom-right sparkle */
+.gifBox::after{
+  bottom: 16px;
+  right: 20px;
+  animation-delay: 1.8s;
+}
+
+@keyframes sparkle{
+  0%{
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  30%{
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  60%{
+    opacity: 0.4;
+    transform: scale(0.85);
+  }
+  100%{
+    opacity: 0;
+    transform: scale(0.6);
+  }
+}
