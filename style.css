@@ -174,4 +174,23 @@ h2{
     transform: translateY(110vh) rotate(360deg);
     opacity: 0.95;
   }
+/* FORCE No button to be small + square (override everything) */
+button.btn.no{
+  position: absolute !important;
+  width: 70px !important;
+  height: 70px !important;
+  padding: 0 !important;
+  border-radius: 12px !important;
+
+  display: grid !important;
+  place-items: center !important;
+
+  left: 0 !important;
+  top: 0 !important;
+
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+
+  z-index: 10 !important;
 }
