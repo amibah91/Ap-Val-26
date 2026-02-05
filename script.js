@@ -141,4 +141,4 @@ replayBtn.addEventListener("click", () => {
 
 // start animation
 typeText(questionEl, fullQuestion, 45);
-moveNoButton();
+// moveNoButton();
