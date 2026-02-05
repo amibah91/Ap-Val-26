@@ -191,9 +191,3 @@ h2{
   75%{ transform: translateX(-2px); }
   100%{ transform: translateX(0); }
 }
-/* 🔥 FORCE REMOVE ANY LEFTOVER SPARKLES */
-.gifBox::before,
-.gifBox::after{
-  display: none !important;
-  content: none !important;
-}
