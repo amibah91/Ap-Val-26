@@ -182,22 +182,6 @@ h2{
   }
 /* FORCE No button to be small + square (override everything) */
 button.btn.no{
-  position: absolute !important;
-  width: 70px !important;
-  height: 70px !important;
-  padding: 0 !important;
-  border-radius: 12px !important;
-
-  display: grid !important;
-  place-items: center !important;
-
-left: auto !important;
-right: 0 !important;
-top: 20px !important;
-
-  white-space: nowrap !important;
-  overflow: hidden !important;
-  text-overflow: ellipsis !important;
-
-  z-index: 10 !important;
+  position: relative;
+  z-index: 5;
 }
