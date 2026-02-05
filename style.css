@@ -95,10 +95,8 @@ h2{
   background: var(--no);
   color: white;
   box-shadow: 0 8px 16px rgba(255,91,91,.35);
-  position: absolute;
+  position: relative;
 
-  width: 70px;
-  height: 70px;
   border-radius: 14px;
 
   display: flex;
@@ -180,8 +178,5 @@ h2{
     transform: translateY(110vh) rotate(360deg);
     opacity: 0.95;
   }
-/* FORCE No button to be small + square (override everything) */
-button.btn.no{
-  position: relative;
-  z-index: 5;
 }
+
