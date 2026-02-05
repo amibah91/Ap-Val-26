@@ -113,24 +113,21 @@ function startHearts(durationMs = 5000){
 
 // No button behavior (THIS is the important fix)
 function dodgeNo(){
-  // First interaction: pull No out of flex, but keep it visible
+  // First dodge: allow No to escape the row
   if (noCount === 0) {
     noBtn.style.position = "absolute";
     noBtn.style.zIndex = "999";
   }
 
-  // Tiny shake before escaping
-  noBtn.classList.remove("shake-no");
-  void noBtn.offsetWidth;
-  noBtn.classList.add("shake-no");
+  noCount++;
 
-  setTimeout(() => {
-    noCount++;
-    setNoText();
-    setGiggle();
-    growYesButton();
-    moveNoButton();
-  }, 140);
+  // 🔽 Shrink No a little each time (gentle)
+  const scale = Math.max(0.75, 1 - noCount * 0.05);
+  noBtn.style.setProperty("--noScale", scale);
+
+  setNoText();
+  setGiggle();
+  moveNoButton();
 }
 
 // Events
