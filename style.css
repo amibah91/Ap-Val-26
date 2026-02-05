@@ -201,3 +201,7 @@ h2{
   75% { transform: translateX(-2px); }
   100% { transform: translateX(0); }
 }
+/* Allow JS to control No size */
+.btn.no{
+  transform: scale(var(--noScale, 1));
+}
