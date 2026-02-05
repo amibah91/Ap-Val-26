@@ -31,11 +31,11 @@ const noTexts = [
 ];
 
 const giggles = [
+  "you are so smart!!! 😚😚",
+  "*sobs but in a pretty way* 🥺",
   "*teehee* 😇",
   "try harder (but not really 🫣)",
   "*dramatic gasp* 😱",
-  "*falls to knees* 🧎‍♀️",
-  "*sobs but in a pretty way* 🥺",
   "*throws roses anyway* 🌹",
   "*whispers: just press yes* 🥲"
 ];
