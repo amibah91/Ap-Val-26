@@ -13,10 +13,10 @@ const giggleEl = document.getElementById("giggle");
 
 let noCount = 0;
 
-// Question text
+// Question
 const fullQuestion = "Big Sexy… will you be my Valentine? 🥺";
 
-// No button texts
+// No button text
 const noTexts = [
   "No",
   "Are you sure, baby?",
@@ -45,7 +45,7 @@ function clamp(n, min, max){
   return Math.max(min, Math.min(max, n));
 }
 
-// Typing effect
+// Typing animation
 function typeText(el, text, speed = 45){
   el.textContent = "";
   let i = 0;
@@ -56,12 +56,12 @@ function typeText(el, text, speed = 45){
   }, speed);
 }
 
-// Move No button randomly
+// Move No safely within the button area
 function moveNoButton(){
   const areaRect = buttonArea.getBoundingClientRect();
   const btnRect = noBtn.getBoundingClientRect();
 
-  const pad = 6;
+  const pad = 10;
   const maxX = areaRect.width - btnRect.width - pad;
   const maxY = areaRect.height - btnRect.height - pad;
 
@@ -72,10 +72,10 @@ function moveNoButton(){
   noBtn.style.top = `${y}px`;
 }
 
-// Grow Yes button AFTER 2 dodges
+// Yes grows after 2 dodges
 function growYesButton(){
   if (noCount < 2) return;
-  const scale = clamp(1 + (noCount - 1) * 0.22, 1, 4.2);
+  const scale = clamp(1 + (noCount - 1) * 0.22, 1, 4);
   yesBtn.style.transform = `scale(${scale})`;
 }
 
@@ -111,14 +111,15 @@ function startHearts(durationMs = 5000){
   setTimeout(() => clearInterval(spawn), durationMs);
 }
 
-// No button behavior
+// No button behavior (THIS is the important fix)
 function dodgeNo(){
-  // FIRST interaction: allow No to escape layout
+  // First interaction: pull No out of flex, but keep it visible
   if (noCount === 0) {
     noBtn.style.position = "absolute";
+    noBtn.style.zIndex = "999";
   }
 
-  // tiny shake
+  // Tiny shake before escaping
   noBtn.classList.remove("shake-no");
   void noBtn.offsetWidth;
   noBtn.classList.add("shake-no");
