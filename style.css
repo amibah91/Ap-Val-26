@@ -139,10 +139,14 @@ h2{
   width: min(360px, 90%);
   height: 180px;
   border-radius: 18px;
-  background: linear-gradient(135deg, #ffe1ef, #fff);
-  display:grid;
-  place-items:center;
-  border: 2px dashed rgba(90,42,42,.18);
+
+  /* keep the same soft pink regardless of background */
+  background: linear-gradient(135deg, #ffe1ef, #ffd6e8);
+
+  display: grid;
+  place-items: center;
+
+  border: 2px dashed rgba(255, 150, 190, 0.55);
 }
 
 .bear{
